@@ -20,6 +20,7 @@
 | screenshot_preview.py | Create a preview collage picture of a video from its frames |
 | video_split.py | Splits video into 'n' number of smaller videos |
 | video_info.py | Exports filename, size, resolution, duration, fps & codec to a excel file | 
+| video_transcode.py | Re-encodes supported videos in other codecs such as vp9 to h264 | 
 
 ### <ins>How to Use</ins>
 
@@ -73,7 +74,21 @@ video_split.py /path/to/video /path/to/output --num_parts 4 --min_size 1000 --ma
 ```batch
 video_info.py /input/directory/or/file /output/directory
 ```
-### **F.A.Q**
+
+### $${\color{lightgreen}Video \space Transcoder}$$
+##### Popular NLEs such as Davinci Resolve, Adobe Premiere, Final Cut can give you a headache when trying to process a non h264/h265/dnxhd encoded video.
+##### This program is super useful in re-encoding the input video file into **h264 codec**, mp4 format
+
+| FFMPEG flags | Explanation |
+| --- | --- | 
+| '-r', str(frame_rate) |  Set frame rate from original video |
+| '-c:v', 'libx264' | Specify output video codec as h264 |
+| '-c:a', 'aac' | Use AAC for audio encoding |
+| '-preset', 'veryfast' | Set veryfast preset for quicker processing |
+| '-threads', '0', | Enable multithreading |
+| '-movflags', '+faststart' | Optimize for streaming |
+
+## **F.A.Q**
 1. #### Why do I get an error when I run the program?
      - Read the instructions, make sure the binaries are in the $PATH
 
