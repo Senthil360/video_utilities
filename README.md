@@ -29,7 +29,7 @@ All the programs <ins>**accept command line arguments**</ins>, if arguments for 
 ### $${\color{lightgreen}Screenshot \space Preview}$$
 
 ```batch
-screenshot_preview.py /input/directory/or/file /output/directory
+python screenshot_preview.py /input/directory/or/file /output/directory
 ```
 
 - If output directory is not specified then a directory with name _**`screencap`**_ will be created in the `current working directory` to which the jpg file will be written
@@ -39,13 +39,13 @@ screenshot_preview.py /input/directory/or/file /output/directory
 Splitting a SINGLE file
 
 ```batch
-video_split.py /path/to/video.mp4 /path/to/output --num_parts 4 --min_size 1000 --max_size 2000
+python video_split.py /path/to/video.mp4 /path/to/output --num_parts 4 --min_size 1000 --max_size 2000
 ```
 
 Splitting MULTIPLE files in a given directory
 
 ```batch
-video_split.py /path/to/video /path/to/output --num_parts 4 --min_size 1000 --max_size 2000
+python video_split.py /path/to/video /path/to/output --num_parts 4 --min_size 1000 --max_size 2000
 ```
 
 ###### Explanation
@@ -72,12 +72,18 @@ video_split.py /path/to/video /path/to/output --num_parts 4 --min_size 1000 --ma
 - Codec
 
 ```batch
-video_info.py /input/directory/or/file /output/directory
+python video_info.py /input/directory/or/file /output/directory
 ```
 
 ### $${\color{lightgreen}Video \space Transcoder}$$
 ##### Popular NLEs such as Davinci Resolve, Adobe Premiere, Final Cut can give you a headache when trying to process a non h264/h265/dnxhd encoded video.
 ##### This program is super useful in re-encoding the input video file into **h264 codec**, mp4 format
+
+```batch
+python video_transcode.py -i /input/directory/or/file -o /output/directory
+```
+
+* Input can either be a file or a directory
 
 | FFMPEG flags | Explanation |
 | --- | --- | 
@@ -87,6 +93,8 @@ video_info.py /input/directory/or/file /output/directory
 | '-preset', 'veryfast' | Set veryfast preset for quicker processing |
 | '-threads', '0', | Enable multithreading |
 | '-movflags', '+faststart' | Optimize for streaming |
+
+- If input is given as a file, then output file will be saved as `input file name + transcoded` in the same directory
 
 ## **F.A.Q**
 1. #### Why do I get an error when I run the program?
