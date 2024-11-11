@@ -73,4 +73,13 @@ video_split.py /path/to/video /path/to/output --num_parts 4 --min_size 1000 --ma
 ```batch
 video_info.py /input/directory/or/file /output/directory
 ```
+### **F.A.Q**
+1. #### Why do I get an error when I run the program?
+     - Read the instructions, make sure the binaries are in the $PATH
 
+2. #### What Operating Systems can I run these on?
+     - The `screenshot_preview` and `video_info` programs are purely written in python and hence can be run in any environment in which python is installed
+     - The `video_split` program requires python, ffmpeg and ffprobe, so it can only be run on platforms which have the binary for it
+  
+3. #### Will there be frequent updates or additions to this repository?
+     - These are scripts I use in my daily workflow which I have decided to share, if some feature is requested and is worthwhile I will definitely work on it but as far as additions and updates go, it will mostly depend on my use cases
