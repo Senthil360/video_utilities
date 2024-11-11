@@ -173,7 +173,9 @@ def main():
         generate_previews_for_directory(args.input, args.output)
     elif os.path.isfile(args.input) and args.input.endswith('.mp4'):
         print(f"Getting screenshot of single video: {args.input}")
-        generate_previews_for_directory(args.input, args.output)
+        output_name = os.path.join(os.getcwd(), "screencap")
+        output_name = os.path.join(output_name, f"{os.path.splitext(os.path.basename(args.input))[0]}_preview.jpg")
+        create_video_preview(args.input, output_name)
     else:
         print("Invalid input. Please provide a valid MP4 file or directory.")
 
