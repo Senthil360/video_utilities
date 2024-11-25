@@ -96,6 +96,25 @@ python video_transcode.py -i /input/directory/or/file -o /output/directory
 
 - If input is given as a file, then output file will be saved as `input file name + transcoded` in the same directory
 
+### $${\color{lightgreen}Video \space Splitter \space using \space Markers }$$
+
+#### A script to split the conetents between 2 bookmarks and output as new video file, Note - It will extract the content between [even - odd] bookmarks, 
+So if you have 1,2,3,4 bookmarks, content between 1 and 2 & content between 3 and 4 will be extracted, content between 2 and 3 won't be extracted
+
+```batch
+python python mark_split.py
+```
+
+or 
+
+```batch
+python python mark_split.py --merge
+```
+
+- If you want your split segments merged into a single file
+
+- This program works from the current working directory, I have not added option in this to work on single file. A bookmark file of the extension '.pbf' with the same video file name has to be present in the working directory
+
 ## **F.A.Q**
 1. #### Why do I get an error when I run the program?
      - Read the instructions, make sure the binaries are in the $PATH
