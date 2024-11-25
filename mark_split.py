@@ -1,3 +1,9 @@
+# A script to split the conetents between 2 bookmarks and output as new video file
+# Note - It will extract the content between [even - odd] bookmarks, 
+# So if you have 1,2,3,4 bookmarks, content between 1 and 2 & content between 3 and 4 will be extracted, content between 2 and 3 won't be extracted
+
+# Usage python mark_split.py , use  [ python mark_split.py --merge ] merge flag to merge the split segments into 1 file
+
 import os
 import subprocess
 import json
@@ -25,7 +31,18 @@ def get_video_duration(video_path):
 
 def parse_bookmarks(bookmarks_file):
     bookmarks = {}
+
+    """
+    Parses a bookmarks file to extract numerical keys and associated times in seconds.
+    In my case I use PoPlayer and it bookmark file is of the '.pbf' extension and encoded in utf-16, 
+    please modify the bookmark capture phenomenon to suit your needs
+    Args:
+        bookmarks_file (str): Path to the bookmarks file.
+    Returns:
+        dict: A dictionary where keys are integer indices and values are times in seconds.
+    """
     try:
+        # Open the file with the correct encoding (UTF-16 for my system)
         with open(bookmarks_file, 'r', encoding='utf-16') as file:
             for line in file:
                 line = line.strip()
